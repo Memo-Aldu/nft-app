@@ -1,0 +1,20 @@
+{
+    "translation" : {
+        "Home" : {
+            "Header": "Hey",
+            "HeaderSub": "Welcome Back"
+           },
+        "Search" : {
+            "Header": "Discover NFT's",
+            "HeaderSub": "Explore the latest NFT projects"
+           },
+        "Ranking" : {
+            "Header": "Collection Rankings",
+            "HeaderSub": "Click here to learn about buying an NFT"
+           },
+        "Info" : {
+            "Header": "Learn About The App",
+            "HeaderSub": "Tutorials, FAQs, and more!"
+           }
+    }
+}
