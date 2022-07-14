@@ -1,6 +1,6 @@
 import react, { FunctionComponent } from "react";
 import Greeting from "../components/Header/Greeting";
-import Profile from "../components/Header/Profile";
+import Profile from "../components/Header/ProfileIcon";
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 //image

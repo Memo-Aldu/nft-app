@@ -1,14 +1,15 @@
 import react, { FunctionComponent } from "react";
 import styled from "styled-components/native"
 import { colors } from "../colors";
+import { ScreenWidth, ScreenHeight } from "../shared";
 import { CardProps } from "./types";
 
 const CardBackground = styled.ImageBackground`
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     resize-mode: cover;
     border-radius: 25px;
-    margin-right: 25px;
+    margin-right: 15px;
     margin-bottom: 25px;
     overflow: hidden;
 `;
@@ -37,18 +38,14 @@ const Logo = styled.Image`
 import card_bg from "./../../assets/bgs/background_transparent.png";
 import bayc from "./../../assets/nft-collections/bayc-1.png";
 
-const SearchCardItem: FunctionComponent<CardProps> = (props) => {
+const CollectionItem: FunctionComponent<CardProps> = (props) => {
     const handlePress = () => {};
 
     return (
         <TouchableView>
-            <CardBackground  source={props.image}>
-                <CardCreatorTouchable onPress={handlePress}>
-                <Logo source={props.nftCreator?.pfp} style={{borderRadius:25}}  />
-                </CardCreatorTouchable>
-            </CardBackground>
+            <CardBackground  source={props.image}/>
         </TouchableView>
     );
 };
 
-export default SearchCardItem;
+export default CollectionItem;

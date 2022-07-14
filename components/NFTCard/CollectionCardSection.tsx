@@ -1,7 +1,7 @@
 import react, { FunctionComponent } from "react";
 import styled from "styled-components/native"
 import { CardSectionProps } from "./types";
-import SearchCardItem from "./SearchCardItem";
+import CollectionItem from "./CollectionItem";
 import RegularText from "../texts/RegularText";
 import SmallText from "../texts/SmallText";
 import { colors } from "../colors";
@@ -10,7 +10,7 @@ const SearchView = styled.View`
     width: 100%;
     padding-horizontal: 10px;
     padding-top: 5px;
-    flex: 2;
+    flex: 1;
 `;
 
 const SearchRow = styled.View`
@@ -25,31 +25,22 @@ const SearchList = styled.FlatList`
     padding-bottom: 15px;
 `;
 
-const SearchCardSection: FunctionComponent<CardSectionProps> = (props) => {
+const CollectionCardSection: FunctionComponent<CardSectionProps> = (props) => {
     return (
-                <SearchView>
-                <SearchRow style={{marginBottom:25}}>
-                    <RegularText textStyles={{fontSize: 19, color: colors.secondary}}>
-                        Results
-                    </RegularText>
-                    <SmallText textStyles={{color: colors.secondary, marginHorizontal:20}}>
-                        Price
-                        <Ionicons name="caret-down" size={13} color={colors.darkGrey}/>
-                    </SmallText>
-                </SearchRow>
-    
+            <SearchView>
                 <SearchList 
                     data={props.data}
                     showsVerticalScrollIndicator={false}
+                    scrollEnabled={true}
                     contentContainerStyle={{
                         paddingBottom: 25,
                     }}
                     keyExtractor={({id}: any) => id.toString()}
-                    renderItem={({item}: any) => <SearchCardItem {...item}/>}
-                    numColumns={2}
+                    renderItem={({item}: any) => <CollectionItem {...item}/>}
+                    numColumns={3}
                 />
             </SearchView>
     );
 };
 
-export default SearchCardSection;
+export default CollectionCardSection;

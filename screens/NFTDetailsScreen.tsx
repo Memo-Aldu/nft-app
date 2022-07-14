@@ -31,13 +31,6 @@ const NFTImageView = styled.View`
     justify-content: space-between;
 `;
 
-const NFTCreatorView = styled.View`
-    width: 100%;
-    z-index: 2;
-    padding: 20px;
-    justify-content: flex-start;
-
-`;
 
 const NFTTextView = styled.View`
     padding-horizontal: 20px;

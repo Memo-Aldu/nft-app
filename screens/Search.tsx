@@ -83,15 +83,64 @@ const SearchCardsData: CardProps[] = [
           background: colors.orange,
           pfp: bayc,
       },
-    }
+    },
+    {
+        id: 5,
+        nftName: "bored apes",
+        nftDescription: "lorem fjkfjsekfengn afmkwfawkf akfmkfmwf",
+        price: "2.1",
+        image: bored_ape3,
+        nftCreator: {
+            id: 3,
+            name: "Allisson",
+            background: colors.orange,
+            pfp: cryptopunks,
+        }
+      },
+      {
+        id: 6,
+        nftName: "bored apes",
+        nftDescription: "lorem fjkfjsekfengn afmkwfawkf akfmkfmwf",
+        price: "6.4",
+        image: bored_ape4,
+        nftCreator: {
+            id: 2,
+            name: "Augustin",
+            background: colors.orange,
+            pfp: coolcats,
+        }
+      },
+      {
+        id: 7,
+        nftName: "bored apes",
+        nftDescription: "lorem fjkfjsekfengn afmkwfawkf akfmkfmwf",
+        price: "1.2",
+        image: bored_ape2,
+        nftCreator: {
+            id: 1,
+            name: "Anthoney",
+            background: colors.orange,
+            pfp: bayc,
+        },
+      }
 ];
+
+const ListView = styled.View`
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    padding-left: 20px;
+`;
+
 
 const Search: FunctionComponent = () => {
     return (
         <SearchContainer>
             <StatusBar style="dark"/>
             <MySearchbar/>
-            <SearchCardSection data={SearchCardsData} />
+            <ListView>
+                <SearchCardSection data={SearchCardsData} />
+            </ListView>
         </SearchContainer>
     );
 };
