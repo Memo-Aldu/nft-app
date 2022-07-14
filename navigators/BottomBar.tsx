@@ -4,13 +4,15 @@ import Greeting from "../components/Header/Greeting";
 import { Ionicons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
 import { I18nextProvider, useTranslation } from "react-i18next";
+import ProfileIcon from "../components/Header/ProfileIcon";
 
 //screens
 import Home from '../screens/Home';
 import WelcomeScreen  from '../screens/WelcomeScreen';
 import Search from '../screens/Search';
 import Ranking from "../screens/Ranking";
-import Profile from "../components/Header/Profile";
+import Profile from "../screens/Profile";
+
 import Info from "../screens/Info";
 import NFTDetailsScreen from "../screens/NFTDetailsScreen";
 //nav
@@ -78,9 +80,9 @@ const MyCustomTabBar = ({ state, descriptors, navigation }: MyTabBarProps ) => {
                  style={{flex:1, justifyContent: "center", alignItems: "center"}}>
                     <TabBarIcon focused={isFocused} size={30} color={isFocused ? colors.primary:colors.darkGrey}/>
                     <Text style={{color: isFocused ? colors.primary:colors.darkGrey, fontSize: 10}}>{label}</Text>
-                    {isFocused && (
+                    {isFocused && ( // black line indicator
                         <View style={{height:6, width:30, position: 
-                            "absolute", backgroundColor: colors.black, top: -20, 
+                            "absolute", backgroundColor: colors.black, top: -11, 
                             borderBottomLeftRadius: 6, borderBottomRightRadius: 6}}/>)}
 
                 </TouchableOpacity>
@@ -99,7 +101,7 @@ const BottomBar: FunctionComponent = () => {
         i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en');
     }
     return (
-        <NavigationContainer theme={MyTheme}>
+        <NavigationContainer>
             <Tab.Navigator
                 screenOptions={{   
                     tabBarShowLabel: false,                
@@ -122,7 +124,7 @@ const BottomBar: FunctionComponent = () => {
                         paddingLeft: 10,
                     },
                     headerRight: () => (
-                        <Profile
+                        <ProfileIcon
                             img={Avi}
                             imgContainerStyle={{
                                 backgroundColor: colors.tertiary,
@@ -185,6 +187,9 @@ const BottomBar: FunctionComponent = () => {
                     ),
                     headerLeft: () => <></>
                 }}/>
+                <Tab.Screen name="Profile" component={Profile} options={{headerShown: false,
+                    tabBarIcon:(props: TabBarIconProps) => 
+                    <Ionicons color={props.color} size={props.size} name={props.focused ? "person":"person-outline"}/>}}/> 
                 <Tab.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false}}/> 
                 <Tab.Screen name="NFTDetails" component={NFTDetailsScreen} options={{headerShown: false}}/>
             </Tab.Navigator>

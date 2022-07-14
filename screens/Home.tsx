@@ -169,8 +169,6 @@ const Home: FunctionComponent = () => {
                     <CardSection data={cardsData} />
 
                     <ProfileSection data={profileData2} sectionName={"Picked For You"}/>
-
-                
            </ScrollView>
         </HomeContainer>
     );

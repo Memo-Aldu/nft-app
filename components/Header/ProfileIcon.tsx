@@ -24,7 +24,7 @@ interface ProfileProps {
 
 }
 
-const Profile: FunctionComponent<ProfileProps> = (props) => {
+const ProfileIcon: FunctionComponent<ProfileProps> = (props) => {
     return (
         <StyledView style={props.imgContainerStyle} onPress={props.onPress}>
             <StyledImage style={props.imgStyle} source={props.img}/>
@@ -33,4 +33,4 @@ const Profile: FunctionComponent<ProfileProps> = (props) => {
     );
 };
 
-export default Profile;
+export default ProfileIcon;
