@@ -1,7 +1,7 @@
 import React from 'react';
 import WelcomeScreen  from './screens/WelcomeScreen';
 import styled from 'styled-components/native';
-import RootStack from './navigators/BottomBar';
+import RootStack from './navigators/Drawer';
 import 'react-native-gesture-handler';
 //font 
 import { useFonts } from 'expo-font';

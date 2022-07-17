@@ -9,6 +9,7 @@ import ProfileView from "./../components/Profiles/ProfileItem";
 import RegularText from "../components/texts/RegularText";
 import SmallText from "../components/texts/SmallText";
 import RegularButton from "../components/buttons/RegularButton";
+import ShoppingCartIcon from "../components/ShoppingCart/ShoppingCartIcon";
 
 const DetailsContainer = styled(Container)`
     background-color: ${colors.lightGrey};
@@ -69,6 +70,7 @@ const NFTDetailsScreen: FunctionComponent<NFTDetailsScreenProps> = (props) => {
             <NFTImageBackground source={nft.image}>
                 <NFTImageView>
                     <Ionicons onPress={props.navigation.goBack} name="chevron-back-outline" size={30} color={colors.black} />
+                    <ShoppingCartIcon></ShoppingCartIcon>
                 </NFTImageView>
             </NFTImageBackground>
             <NFTRowView>

@@ -5,6 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
 import { I18nextProvider, useTranslation } from "react-i18next";
 import ProfileIcon from "../components/Header/ProfileIcon";
+import Drawer from './Drawer';
+import { DrawerActions } from '@react-navigation/native';
 
 //screens
 import Home from '../screens/Home';
@@ -12,16 +14,16 @@ import WelcomeScreen  from '../screens/WelcomeScreen';
 import Search from '../screens/Search';
 import Ranking from "../screens/Ranking";
 import Profile from "../screens/Profile";
-
 import Info from "../screens/Info";
 import NFTDetailsScreen from "../screens/NFTDetailsScreen";
 //nav
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer} from "@react-navigation/native";
+import { NavigationContainer, useNavigation} from "@react-navigation/native";
 //image
 import Avi from "./../assets/avi/avatar.png";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import ShoppingCartIcon from "../components/ShoppingCart/ShoppingCartIcon";
 
 const CustomTabBarView = styled.View`
     flex-direction: row;
@@ -56,6 +58,9 @@ const MyTheme = {
       notification: 'rgb(255, 69, 58)',
     },
   };
+
+
+
 
 const MyCustomTabBar = ({ state, descriptors, navigation }: MyTabBarProps ) => {
     return (
@@ -94,14 +99,18 @@ const MyCustomTabBar = ({ state, descriptors, navigation }: MyTabBarProps ) => {
 
 const Tab = createBottomTabNavigator();
 
-const BottomBar: FunctionComponent = () => {
+const BottomBar: FunctionComponent = (props) => {
     const { t, i18n } = useTranslation();
     const changeLanguage = () => {
         console.log("change language");
         i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en');
     }
+    const navigation = useNavigation();
+    const closeDrawer = () => {
+        navigation.dispatch(DrawerActions.toggleDrawer());
+    };
     return (
-        <NavigationContainer>
+
             <Tab.Navigator
                 screenOptions={{   
                     tabBarShowLabel: false,                
@@ -124,14 +133,16 @@ const BottomBar: FunctionComponent = () => {
                         paddingLeft: 10,
                     },
                     headerRight: () => (
-                        <ProfileIcon
+                        <Ionicons.Button name="ios-menu" size={25} color={colors.secondary}  backgroundColor="transparent"
+                            onPress={closeDrawer}></Ionicons.Button>
+                    ),
+/*                         <ProfileIcon
                             img={Avi}
                             imgContainerStyle={{
                                 backgroundColor: colors.tertiary,
                             }}
                             onPress={changeLanguage}
-                        />
-                    )
+                        /> */
                     
                 }}
                 tabBar={(props) => (
@@ -175,17 +186,9 @@ const BottomBar: FunctionComponent = () => {
                     ),
                     headerLeft: () => <></>
                 }}/>
-                <Tab.Screen name="Info" component={Info} 
+                <Tab.Screen name="Cart" component={Info} 
                 options={{
-                    tabBarIcon:(props: TabBarIconProps) => 
-                    <Ionicons color={props.color} size={props.size} name={props.focused ? "information-circle":"information-circle-outline"}/>,
-                    headerTitle: (props) => (
-                        <Greeting
-                        mainText={t("Info.Header") }
-                        subText={t("Info.HeaderSub") }
-                        {...props}/>
-                    ),
-                    headerLeft: () => <></>
+                    tabBarIcon:(props: TabBarIconProps) => (<ShoppingCartIcon></ShoppingCartIcon>)
                 }}/>
                 <Tab.Screen name="Profile" component={Profile} options={{headerShown: false,
                     tabBarIcon:(props: TabBarIconProps) => 
@@ -193,7 +196,6 @@ const BottomBar: FunctionComponent = () => {
                 <Tab.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false}}/> 
                 <Tab.Screen name="NFTDetails" component={NFTDetailsScreen} options={{headerShown: false}}/>
             </Tab.Navigator>
-        </NavigationContainer>
     );
 }
 

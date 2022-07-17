@@ -13,13 +13,6 @@ const SearchView = styled.View`
     flex: 1;
 `;
 
-const SearchRow = styled.View`
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-`;
-
 const SearchList = styled.FlatList`
     width: 100%;
     padding-bottom: 15px;
