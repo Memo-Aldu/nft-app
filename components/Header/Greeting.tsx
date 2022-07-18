@@ -11,6 +11,11 @@ const StyledView = styled.View`
     justify-content: center; 
 `;
 
+const Row = styled.View`
+    flex-direction: row;
+    justify-content: flex-start;
+`;
+
 interface GreetingProps {
     mainText: string;
     subText: string;
@@ -21,28 +26,31 @@ interface GreetingProps {
 const Greeting: FunctionComponent<GreetingProps> = (props) => {
     return (
         <StyledView>
-            <RegularText
-                textStyles={[
-                    {
-                        color: colors.secondary,
-                        fontSize: 22,
-                    },
-                    props.mainTextStyles,
-                ]}
-            >
-                {props.mainText}
-            </RegularText>
-            <SmallText
-                textStyles={[
-                    {
-                        color: colors.darkGrey,
-
-                    },
-                    props.subTextStyles,
-                ]}
-            >
-                {props.subText}
-            </SmallText>
+            <Row>
+                <RegularText
+                    textStyles={[
+                        {
+                            color: colors.secondary,
+                            fontSize: 22,
+                        },
+                        props.mainTextStyles,
+                    ]}
+                >
+                    {props.mainText}
+                </RegularText>
+            </Row>
+            <Row>
+                <SmallText
+                    textStyles={[
+                        {
+                            color: colors.darkGrey,
+                        },
+                        props.subTextStyles,
+                    ]}
+                >
+                    {props.subText}
+                </SmallText>
+            </Row>
         </StyledView>
     );
 };

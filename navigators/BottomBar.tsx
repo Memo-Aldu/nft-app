@@ -151,6 +151,7 @@ const BottomBar: FunctionComponent = (props) => {
                 initialRouteName="Home">
                 <Tab.Screen name="Home" component={Home} 
                 options={{
+                    headerTitleAlign: 'left',
                     tabBarIcon:(props: TabBarIconProps) => 
                     <Ionicons color={props.color} size={props.size} name={props.focused ? "home":"home-outline"}/>,
 
@@ -164,6 +165,7 @@ const BottomBar: FunctionComponent = (props) => {
                 }}/>
                 <Tab.Screen name="Search" component={Search} 
                 options={{
+                    headerTitleAlign: 'left',
                     tabBarIcon:(props: TabBarIconProps) => 
                     <Ionicons color={props.color} size={props.size} name={props.focused ? "search":"search-outline"}/>,
                     headerTitle: (props) => (
@@ -176,6 +178,7 @@ const BottomBar: FunctionComponent = (props) => {
                 }}/>
                 <Tab.Screen name="Ranking" component={Ranking} 
                 options={{
+                    headerTitleAlign: 'left',
                     tabBarIcon:(props: TabBarIconProps) => 
                     <Ionicons color={props.color} size={props.size} name={props.focused ? "stats-chart":"stats-chart-outline"}/>,
                     headerTitle: (props) => (
@@ -188,6 +191,7 @@ const BottomBar: FunctionComponent = (props) => {
                 }}/>
                 <Tab.Screen name="Cart" component={Info} 
                 options={{
+                    headerTitleAlign: 'left',
                     tabBarIcon:(props: TabBarIconProps) => (<ShoppingCartIcon></ShoppingCartIcon>)
                 }}/>
                 <Tab.Screen name="Profile" component={Profile} options={{headerShown: false,
