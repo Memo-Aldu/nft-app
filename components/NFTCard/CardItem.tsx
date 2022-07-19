@@ -2,7 +2,7 @@ import react, { FunctionComponent } from "react";
 import styled from "styled-components/native"
 import { colors } from "../colors";
 import { ScreenWidth, ScreenHeight } from "../shared";
-import { CardProps } from "./types";
+import { INFT } from "./types";
 import { Image, StyleSheet } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import RegularButton from "../buttons/RegularButton";
@@ -79,11 +79,11 @@ import bayc from "./../../assets/nft-collections/bayc-1.png";
 import SmallText from "../texts/SmallText";
 import { useNavigation } from "@react-navigation/native";
 
-const CardItem: FunctionComponent<CardProps> = (props) => {
+const CardItem: FunctionComponent<INFT> = (props) => {
     const navigation = useNavigation();
     const handlePress = () => {navigation.navigate("NFTDetails" as never, {"nft" : props} as never)};
     const handleNFTPress = () => {console.log("NFT BUY Pressed")};
-
+    console.log(props.image)
     return (
         <CardView>
             <CardTouchable style={Style.card} onPress={handlePress}>
@@ -96,7 +96,7 @@ const CardItem: FunctionComponent<CardProps> = (props) => {
                 <CardDetailsView>
                     <CardDetailsSubView>
                         <Image source={require('./../../assets/eth.jpg')} style={{width: 25, height: 25, borderRadius: 25}} />
-                        <SmallText textStyles={{fontWeight: 'bold', marginLeft: 4, color: colors.white}}>{props.price}</SmallText>
+                        <SmallText textStyles={{fontWeight: 'bold', marginLeft: 4, color: colors.white}}>{props.data.price}</SmallText>
                     </CardDetailsSubView>
                     <RegularButton onPress={handleNFTPress} textStyles={{fontSize: 15, fontWeight: 'bold'}} btnStyles={{width:70, height:30, justifyContent: 'center', borderRadius: 8, padding: 0}}>Buy</RegularButton>
                 </CardDetailsView>

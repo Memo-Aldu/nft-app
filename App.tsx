@@ -1,16 +1,20 @@
 import React from 'react';
-import WelcomeScreen  from './screens/WelcomeScreen';
-import styled from 'styled-components/native';
 import RootStack from './navigators/Drawer';
 import 'react-native-gesture-handler';
+import { ActivityIndicator } from "react-native";
 //font 
 import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
 import { I18nextProvider, useTranslation } from "react-i18next";
+
+import { Store } from "redux"
+
+import { configureStore  } from '@reduxjs/toolkit'
+import reducer from "./store/reducer"
+import { Provider } from "react-redux"
+import {NFTAction, DispatchType, NFTState } from "./store/type.d"
 
 import {initReactI18next} from 'react-i18next';
 import i18n from 'i18next';
-import { Localization } from "expo-Localization";
 import en from "./lang/en.json"
 import ru from "./lang/ru.json"
 
@@ -36,14 +40,25 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return <ActivityIndicator color={"#fff"} />;
   }
 
+  const store: Store<NFTState, NFTAction> & {
+    dispatch: DispatchType
+  } = configureStore({
+      reducer:  reducer,
+      middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+          serializableCheck: false,
+        })
+    })
+
   return (
-    
-    <I18nextProvider i18n={i18n}>
-     <RootStack /> 
-    </I18nextProvider>
+    <Provider store={store}>
+      <I18nextProvider i18n={i18n}>
+      <RootStack /> 
+      </I18nextProvider>
+    </Provider>
 
   );
 }

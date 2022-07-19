@@ -15,6 +15,10 @@
         "Info" : {
             "Header": "Learn About The App",
             "HeaderSub": "Tutorials, FAQs, and more!"
+           },
+        "Cart" : {
+            "Header": "Your Cart",
+            "HeaderSub": "Checkout with your items!"
            }
     }
 }

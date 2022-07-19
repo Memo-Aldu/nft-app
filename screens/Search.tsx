@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components/native";
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from "react-native";
 import { colors } from "../components/colors";
 import SearchCardSection from "../components/NFTCard/SearchCardSection";
 import { Container } from "../components/shared";
@@ -18,7 +18,7 @@ import cryptopunks from "./../assets/nft-collections/Cryptopunks.png";
 import meebits from "./../assets/nft-collections/meebits.png";
 import mutantape from "./../assets/nft-collections/mutantape.png";
 import ProfileSection from "../components/Profiles/ProfileSection";
-import { CardProps } from "../components/NFTCard/types";
+import { INFT } from "../components/NFTCard/types";
 
 const SearchContainer = styled(Container)`
     background-color: ${colors.lightGrey};
@@ -31,7 +31,7 @@ import CardSection from "../components/NFTCard/CardSection";
 import TransactionSection from "../components/Ranking/RankingSection";
 
 
-const SearchCardsData: CardProps[] = [
+const SearchCardsData: INFT[] = [
   {
     id: 1,
     nftName: "bored apes",
@@ -136,7 +136,9 @@ const ListView = styled.View`
 const Search: FunctionComponent = () => {
     return (
         <SearchContainer>
-            <StatusBar style="dark"/>
+            <StatusBar translucent
+                backgroundColor="transparent"
+                barStyle="dark-content"/>
             <MySearchbar/>
             <ListView>
                 <SearchCardSection data={SearchCardsData} />

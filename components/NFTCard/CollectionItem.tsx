@@ -2,7 +2,7 @@ import react, { FunctionComponent } from "react";
 import styled from "styled-components/native"
 import { colors } from "../colors";
 import { ScreenWidth, ScreenHeight } from "../shared";
-import { CardProps } from "./types";
+import { INFT } from "./types";
 
 const CardBackground = styled.ImageBackground`
     height: 100px;
@@ -35,10 +35,8 @@ const Logo = styled.Image`
     resize-mode: contain;
     flex: 1;
 `;
-import card_bg from "./../../assets/bgs/background_transparent.png";
-import bayc from "./../../assets/nft-collections/bayc-1.png";
 
-const CollectionItem: FunctionComponent<CardProps> = (props) => {
+const CollectionItem: FunctionComponent<INFT> = (props) => {
     const handlePress = () => {};
 
     return (

@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { StatusBar } from "react-native";
 import styled from "styled-components/native";
 import DropDown from "../components/buttons/DropDown";
 import { colors } from "../components/colors";
@@ -94,6 +95,9 @@ const RankingData = [
 const Ranking: FunctionComponent = () => {
     return (
         <RankingContainer>
+            <StatusBar translucent
+                backgroundColor="transparent"
+                barStyle="dark-content"/>
             <RankingSection data={RankingData}></RankingSection>
         </RankingContainer>
     );

@@ -9,7 +9,11 @@ import ProfileView from "./../components/Profiles/ProfileItem";
 import RegularText from "../components/texts/RegularText";
 import SmallText from "../components/texts/SmallText";
 import RegularButton from "../components/buttons/RegularButton";
-import ShoppingCartIcon from "../components/ShoppingCart/ShoppingCartIcon";
+import ShoppingCartIcon from "../components/Cart/ShoppingCartIcon";
+import {connect } from "react-redux";
+import { addToCart } from "../store/actionCreators";
+import { INFT } from "../components/NFTCard/types";
+import { DispatchType } from "../store/type.d";
 
 const DetailsContainer = styled(Container)`
     background-color: ${colors.lightGrey};
@@ -57,11 +61,12 @@ interface NFTDetailsScreenProps {
     route: any;
     navigation: any;
     children: any;
+    addToCart: (nft: INFT) => void;
 }
 
 const NFTDetailsScreen: FunctionComponent<NFTDetailsScreenProps> = (props) => {                  
     const {nft}: any = props.route.params;
-    console.log(nft);
+
     return (
         <DetailsContainer>
             <StatusBar translucent
@@ -76,22 +81,22 @@ const NFTDetailsScreen: FunctionComponent<NFTDetailsScreenProps> = (props) => {
             <NFTRowView>
                 <NFTTextView>
                     <RegularText textStyles={{fontSize: 24, color: colors.orange, fontWeight:"bold"}}>
-                        {nft.nftName}
+                        {nft.name}
                     </RegularText>
                     <RegularText textStyles={{fontSize: 15, color: colors.black, fontWeight:'normal', paddingTop:10}}>
-                        {nft.nftDescription}
+                        {nft.description}
                     </RegularText>
                 </NFTTextView>
             </NFTRowView>
 
             <NFTRowView style={{justifyContent: "flex-start", width:"100%", paddingLeft: 20}}>
                 <TransactionAvi
-                        background={nft.nftCreator.background}
-                        icon={nft.nftCreator.pfp}
+                        background={nft.creator.background}
+                        icon={nft.creator.pfp}
                     />
                     <View style={{marginLeft: 10}}>
                         <RegularText textStyles={{textAlign: "left", color: colors.secondary, marginBottom: 5}}>
-                            {nft.nftCreator.name}
+                            {nft.creator.name}
                         </RegularText>
                         <SmallText textStyles={{textAlign: "left", color: colors.darkGrey}}>
                             Art stuido by nat
@@ -102,25 +107,35 @@ const NFTDetailsScreen: FunctionComponent<NFTDetailsScreenProps> = (props) => {
             <NFTRowView style={{justifyContent: "flex-start", width:"100%", padding: 20}}>
                 <NFTIconView>
                     <Image source={require('./../assets/eth.jpg')} style={{width: 30, height: 30, borderRadius: 30}} />
-                    <SmallText textStyles={{fontWeight: 'bold', marginLeft: 4, color: colors.black}}>{nft.price}</SmallText>
+                    <SmallText textStyles={{fontWeight: 'bold', marginLeft: 4, color: colors.black}}>{nft.data.price}</SmallText>
                 </NFTIconView>
                 <NFTIconView>
                     <Ionicons name="chatbubble" size={25} color={colors.orange}
                         style={{position: "relative", zIndex: 1}}/>
-                    <SmallText textStyles={{fontWeight: 'bold', marginLeft: 4, color: colors.black}}>{nft.price}</SmallText>
+                    <SmallText textStyles={{fontWeight: 'bold', marginLeft: 4, color: colors.black}}>{nft.data.comments}</SmallText>
                 </NFTIconView>
                 <NFTIconView>
                     <Ionicons name="heart" size={25} color={colors.orange}
                             style={{position: "relative", zIndex: 1}}/>
-                    <SmallText textStyles={{fontWeight: 'bold', marginLeft: 4, color: colors.black}}>{nft.price}</SmallText>
+                    <SmallText textStyles={{fontWeight: 'bold', marginLeft: 4, color: colors.black}}>{nft.data.likes}</SmallText>
                 </NFTIconView>
             </NFTRowView>
             <NFTRowView style={{justifyContent: "space-evenly", width: "100%"}}>
-            <RegularButton onPress={() => {console.log("g")}} textStyles={{fontSize: 15, fontWeight: 'bold'}} btnStyles={{width:150, height:40, justifyContent: 'center', borderRadius: 8, padding: 0}}>Add To Cart</RegularButton>
+            <RegularButton onPress={() => {props.addToCart(nft)}} textStyles={{fontSize: 15, fontWeight: 'bold'}} btnStyles={{width:150, height:40, justifyContent: 'center', borderRadius: 8, padding: 0}}>Add To Cart</RegularButton>
             <RegularButton onPress={() => {console.log("g")}} textStyles={{fontSize: 15, fontWeight: 'bold'}} btnStyles={{width:150, height:40, justifyContent: 'center', borderRadius: 8, padding: 0}}>Buy</RegularButton>
             </NFTRowView>
             
         </DetailsContainer>
     );
 };
-export default NFTDetailsScreen;
+
+const mapDispatchToProps = (dispatch: DispatchType) => {
+    return {
+        addToCart: (nft: INFT) => {
+            console.log(nft);
+            dispatch({type: 'ADD_NFT', nft: nft});
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(NFTDetailsScreen);

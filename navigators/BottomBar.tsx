@@ -16,14 +16,15 @@ import Ranking from "../screens/Ranking";
 import Profile from "../screens/Profile";
 import Info from "../screens/Info";
 import NFTDetailsScreen from "../screens/NFTDetailsScreen";
+import Cart from "../screens/Cart";
 //nav
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer, useNavigation} from "@react-navigation/native";
+import {useNavigation} from "@react-navigation/native";
 //image
-import Avi from "./../assets/avi/avatar.png";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
-import ShoppingCartIcon from "../components/ShoppingCart/ShoppingCartIcon";
+import ShoppingCartIcon from "../components/Cart/ShoppingCartIcon";
+import { ScreenWidth } from "../components/shared";
 
 const CustomTabBarView = styled.View`
     flex-direction: row;
@@ -61,14 +62,24 @@ const MyTheme = {
 
 
 
-
 const MyCustomTabBar = ({ state, descriptors, navigation }: MyTabBarProps ) => {
     return (
-    <CustomTabBarView>
+    <CustomTabBarView style={{
+        backgroundColor: colors.darkGrey,
+        position: 'absolute',
+        bottom: 10,
+        marginHorizontal: 20,
+        height: 60,
+        width: ScreenWidth * 0.9,
+        borderRadius: 10,
+        // shadow
+        shadowColor: colors.black,
+        shadowOffset: { width: 10, height: 10 },
+        shadowOpacity: 0.06,
+    }}>
         {state.routes.map((route:any, index:any) => {
             const { options } = descriptors[route.key];
-            const label =
-            options.tabBarLabel !== undefined
+            const label = options.tabBarLabel !== undefined
                 ? options.tabBarLabel
                 : options.title !== undefined
                 ? options.title
@@ -83,9 +94,9 @@ const MyCustomTabBar = ({ state, descriptors, navigation }: MyTabBarProps ) => {
                 key={route.key}
                 onPress={() => navigation.navigate(route.name)}
                  style={{flex:1, justifyContent: "center", alignItems: "center"}}>
-                    <TabBarIcon focused={isFocused} size={30} color={isFocused ? colors.primary:colors.darkGrey}/>
-                    <Text style={{color: isFocused ? colors.primary:colors.darkGrey, fontSize: 10}}>{label}</Text>
-                    {isFocused && ( // black line indicator
+                    <TabBarIcon focused={isFocused} size={20} color={isFocused ? colors.orange: colors.lightGrey}/>
+                    <Text style={{color: isFocused ? colors.lightGrey: colors.darkGrey, fontSize: 12}}>{isFocused && label}</Text>
+                    {isFocused && label !== "Cart" && ( // black line indicator
                         <View style={{height:6, width:30, position: 
                             "absolute", backgroundColor: colors.black, top: -11, 
                             borderBottomLeftRadius: 6, borderBottomRightRadius: 6}}/>)}
@@ -153,7 +164,7 @@ const BottomBar: FunctionComponent = (props) => {
                 options={{
                     headerTitleAlign: 'left',
                     tabBarIcon:(props: TabBarIconProps) => 
-                    <Ionicons color={props.color} size={props.size} name={props.focused ? "home":"home-outline"}/>,
+                    <Ionicons color={props.color} size={props.size} name={"home"}/>,
 
                     headerTitle: (props) => (
                         <Greeting
@@ -167,7 +178,7 @@ const BottomBar: FunctionComponent = (props) => {
                 options={{
                     headerTitleAlign: 'left',
                     tabBarIcon:(props: TabBarIconProps) => 
-                    <Ionicons color={props.color} size={props.size} name={props.focused ? "search":"search-outline"}/>,
+                    <Ionicons color={props.color} size={props.size} name={"search"}/>,
                     headerTitle: (props) => (
                         <Greeting
                         mainText={t("Search.Header") }
@@ -176,11 +187,36 @@ const BottomBar: FunctionComponent = (props) => {
                     ),
                     headerLeft: () => <></>
                 }}/>
+                <Tab.Screen name="Cart" component={Cart} 
+                options={{
+                    headerTitleAlign: 'left',
+                    headerTitle: (props) => (
+                        <Greeting
+                            mainText={t("Cart.Header") }
+                            subText={t("Cart.HeaderSub") }
+                        {...props}/>
+                    ),
+                    tabBarIcon:(props: TabBarIconProps) => (
+                        <TouchableOpacity>
+                            <View style={{
+                                width: 50,
+                                height: 50,
+                                backgroundColor: colors.orange,
+                                justifyContent: "center",
+                                alignItems: "center",
+                                borderRadius: 25,
+                            }}>
+                            <ShoppingCartIcon/>
+                            </View>
+                        </TouchableOpacity>
+
+                    )
+                }}/>
                 <Tab.Screen name="Ranking" component={Ranking} 
                 options={{
                     headerTitleAlign: 'left',
                     tabBarIcon:(props: TabBarIconProps) => 
-                    <Ionicons color={props.color} size={props.size} name={props.focused ? "stats-chart":"stats-chart-outline"}/>,
+                    <Ionicons color={props.color} size={props.size} name={"stats-chart"}/>,
                     headerTitle: (props) => (
                         <Greeting
                         mainText={t("Ranking.Header") }
@@ -189,16 +225,21 @@ const BottomBar: FunctionComponent = (props) => {
                     ),
                     headerLeft: () => <></>
                 }}/>
-                <Tab.Screen name="Cart" component={Info} 
-                options={{
-                    headerTitleAlign: 'left',
-                    tabBarIcon:(props: TabBarIconProps) => (<ShoppingCartIcon></ShoppingCartIcon>)
-                }}/>
                 <Tab.Screen name="Profile" component={Profile} options={{headerShown: false,
                     tabBarIcon:(props: TabBarIconProps) => 
-                    <Ionicons color={props.color} size={props.size} name={props.focused ? "person":"person-outline"}/>}}/> 
+                    <Ionicons color={props.color} size={props.size} name="person"/>}}/> 
                 <Tab.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false}}/> 
                 <Tab.Screen name="NFTDetails" component={NFTDetailsScreen} options={{headerShown: false}}/>
+                <Tab.Screen name="Info" component={Info} options={{
+                    headerTitleAlign: 'left',
+                    headerTitle: (props) => (
+                        <Greeting
+                            mainText={t("Info.Header") }
+                            subText={t("Info.HeaderSub") }
+                        {...props}/>
+                    ),
+                    headerLeft: () => <></>
+                }}/>
             </Tab.Navigator>
     );
 }

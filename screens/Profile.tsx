@@ -24,7 +24,8 @@ import cryptopunks from "./../assets/nft-collections/Cryptopunks.png";
 import meebits from "./../assets/nft-collections/meebits.png";
 import mutantape from "./../assets/nft-collections/mutantape.png";
 import ProfileSection from "../components/Profiles/ProfileSection";
-import { CardProps } from "../components/NFTCard/types";
+import {INFT} from "../components/NFTCard/types";
+import {data} from "../nft.data";
 
 
 const ProfileContainer = styled(Container)`
@@ -84,99 +85,7 @@ const CollectionView = styled.View`
     padding-left: 20px;
     flex: 1;
 `;
-const SearchCardsData: CardProps[] = [
-    {
-      id: 1,
-      nftName: "bored apes",
-      nftDescription: "lorem fjkfjsekfengn afmkwfawkf akfmkfmwf",
-      price: "0.8",
-      image: bored_ape1,
-      nftCreator: {
-        id: 4,
-        name: "Danielle",
-        background: colors.orange,
-        pfp: mutantape,
-    }
-    },
-    {
-        id: 2,
-        nftName: "bored apes",
-        nftDescription: "lorem fjkfjsekfengn afmkwfawkf akfmkfmwf",
-        price: "2.1",
-        image: bored_ape3,
-        nftCreator: {
-            id: 3,
-            name: "Allisson",
-            background: colors.orange,
-            pfp: cryptopunks,
-        }
-      },
-      {
-        id: 3,
-        nftName: "bored apes",
-        nftDescription: "lorem fjkfjsekfengn afmkwfawkf akfmkfmwf",
-        price: "6.4",
-        image: bored_ape4,
-        nftCreator: {
-            id: 2,
-            name: "Augustin",
-            background: colors.orange,
-            pfp: coolcats,
-        }
-      },
-      {
-        id: 4,
-        nftName: "bored apes",
-        nftDescription: "lorem fjkfjsekfengn afmkwfawkf akfmkfmwf",
-        price: "1.2",
-        image: bored_ape2,
-        nftCreator: {
-            id: 1,
-            name: "Anthoney",
-            background: colors.orange,
-            pfp: bayc,
-        },
-      },
-      {
-          id: 5,
-          nftName: "bored apes",
-          nftDescription: "lorem fjkfjsekfengn afmkwfawkf akfmkfmwf",
-          price: "2.1",
-          image: bored_ape3,
-          nftCreator: {
-              id: 3,
-              name: "Allisson",
-              background: colors.orange,
-              pfp: cryptopunks,
-          }
-        },
-        {
-          id: 6,
-          nftName: "bored apes",
-          nftDescription: "lorem fjkfjsekfengn afmkwfawkf akfmkfmwf",
-          price: "6.4",
-          image: bored_ape4,
-          nftCreator: {
-              id: 2,
-              name: "Augustin",
-              background: colors.orange,
-              pfp: coolcats,
-          }
-        },
-        {
-          id: 7,
-          nftName: "bored apes",
-          nftDescription: "lorem fjkfjsekfengn afmkwfawkf akfmkfmwf",
-          price: "1.2",
-          image: bored_ape2,
-          nftCreator: {
-              id: 1,
-              name: "Anthoney",
-              background: colors.orange,
-              pfp: bayc,
-          },
-        }
-];
+
 
 const Profile: FunctionComponent = () => {
     const navigation = useNavigation();
@@ -226,7 +135,7 @@ const Profile: FunctionComponent = () => {
                     </RegularButton>
                 </RowView>
                 <CollectionView>
-                    <CollectionCardSection data={SearchCardsData} />
+                    <CollectionCardSection data={data[0]} />
                 </CollectionView>
         </ProfileContainer>
     );

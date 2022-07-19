@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from "react";
-import { ScrollView, StyleSheet, View} from "react-native";
-import { StatusBar } from "expo-status-bar";
+import { ScrollView, StatusBar} from "react-native";
 import styled from "styled-components/native";
 import  { colors } from "../components/colors";
 import CardSection from "../components/NFTCard/CardSection";
 import TransactionSection from "../components/Ranking/RankingSection";
 import {Container} from "../components/shared";
 import {ProfileProps} from "../components/Profiles/types";
-import {CardProps} from "../components/NFTCard/types";
+import {INFT} from "../components/NFTCard/types";
+import {data} from "../nft.data";
 
 // assets
 import bored_ape1 from "./../assets/nft/1.jpg";
@@ -32,61 +32,6 @@ const HomeContainer = styled(Container)`
 
 const Home: FunctionComponent = () => {
 
-    const cardsData: CardProps[] = [
-        {
-          id: 1,
-          nftName: "Bored Ape",
-          nftDescription: "Aliqua pariatur esse commodo proident Lorem dolore. Officia eu et minim incididunt pariatur Lorem est laborum consectetur .",
-          price: "0.8",
-          image: bored_ape1,
-          nftCreator: {
-            id: 4,
-            name: "Danielle",
-            background: colors.orange,
-            pfp: mutantape,
-        }
-        },
-        {
-            id: 2,
-            nftName: "bored apes",
-            nftDescription: "lorem fjkfjsekfengn afmkwfawkf akfmkfmwf",
-            price: "2.1",
-            image: bored_ape3,
-            nftCreator: {
-                id: 3,
-                name: "Allisson",
-                background: colors.orange,
-                pfp: cryptopunks,
-            }
-          },
-          {
-            id: 3,
-            nftName: "bored apes",
-            nftDescription: "lorem fjkfjsekfengn afmkwfawkf akfmkfmwf",
-            price: "6.4",
-            image: bored_ape4,
-            nftCreator: {
-                id: 2,
-                name: "Augustin",
-                background: colors.orange,
-                pfp: coolcats,
-            }
-          },
-          {
-            id: 4,
-            nftName: "bored apes",
-            nftDescription: "lorem fjkfjsekfengn afmkwfawkf akfmkfmwf",
-            price: "1.2",
-            image: bored_ape2,
-            nftCreator: {
-                id: 1,
-                name: "Anthoney",
-                background: colors.orange,
-                pfp: bayc,
-            },
-          }
-    ];
-
     const profileData: ProfileProps[] = [
         {
             id: 1,
@@ -96,7 +41,7 @@ const Home: FunctionComponent = () => {
         },
         {
             id: 2,
-            name: "Augustin",
+            name: "Austin",
             background: colors.orange,
             pfp: coolcats,
         },
@@ -155,18 +100,20 @@ const Home: FunctionComponent = () => {
 
     return (
         <HomeContainer>
-            <StatusBar style="light"/>
+            <StatusBar translucent
+                backgroundColor="transparent"
+                barStyle="dark-content"/>
             <ScrollView nestedScrollEnabled={true} style={{ width: "100%", height: "100%"}} >
 
-                    <CardSection data={cardsData} />
+                    <CardSection data={data[0]} />
 
                     <ProfileSection data={profileData} sectionName={"Trending Collections"}/>
 
-                    <CardSection data={cardsData} />
+                    <CardSection data={data[0]} />
 
                     <ProfileSection data={profileData2} sectionName={"Top Collections"}/>
 
-                    <CardSection data={cardsData} />
+                    <CardSection data={data[0]} />
 
                     <ProfileSection data={profileData2} sectionName={"Picked For You"}/>
            </ScrollView>

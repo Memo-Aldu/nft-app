@@ -4,7 +4,7 @@ import { colors } from "../components/colors";
 import { Container } from "../components/shared";
 import CollapsibleView from "@eliav2/react-native-collapsible-view";
 import RegularText from "../components/texts/RegularText";
-import {Image, Text, View} from "react-native";
+import {Image, StatusBar, Text, View} from "react-native";
 
 import myVideo from "../assets/video.jpg";
 const InfoContainer = styled(Container)`
@@ -26,6 +26,9 @@ const InfoRow = styled.View`
 const Info: FunctionComponent = () => {
     return (
         <InfoContainer>
+            <StatusBar translucent
+                backgroundColor="transparent"
+                barStyle="dark-content"/>
             <InfoRow>
                 <RegularText textStyles={{fontSize: 19, color: colors.secondary}}>FAQ</RegularText>
             </InfoRow>

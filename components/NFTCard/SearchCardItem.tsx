@@ -1,7 +1,7 @@
 import react, { FunctionComponent } from "react";
 import styled from "styled-components/native"
 import { colors } from "../colors";
-import { CardProps } from "./types";
+import { INFT } from "./types";
 
 const CardBackground = styled.ImageBackground`
     height: 150px;
@@ -37,14 +37,14 @@ const Logo = styled.Image`
 import card_bg from "./../../assets/bgs/background_transparent.png";
 import bayc from "./../../assets/nft-collections/bayc-1.png";
 
-const SearchCardItem: FunctionComponent<CardProps> = (props) => {
+const SearchCardItem: FunctionComponent<INFT> = (props) => {
     const handlePress = () => {};
 
     return (
         <TouchableView>
             <CardBackground  source={props.image}>
                 <CardCreatorTouchable onPress={handlePress}>
-                <Logo source={props.nftCreator?.pfp} style={{borderRadius:25}}  />
+                <Logo source={props.creator?.pfp} style={{borderRadius:25}}  />
                 </CardCreatorTouchable>
             </CardBackground>
         </TouchableView>

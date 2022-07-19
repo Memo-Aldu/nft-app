@@ -1,17 +1,30 @@
 import { ImageSourcePropType } from 'react-native';
 import { ProfileProps } from '../Profiles/types';
 
-export interface CardProps {
-    id: number;
-    nftName: string;
-    nftDescription: string;
-    price?: string;
-    nftCreator?: ProfileProps ;
+export interface INFT {
+    id: number
+    name: string;
     image: ImageSourcePropType;
+    data : {
+        price: number;
+        likes: number
+        comments: number
+    }
+    comments : Comments[]
+    description?: string;
+    creator?: ProfileProps ;
+    collection?: string;
 }
 
+export interface Comments { // move to its component when it's ready
+    id: number;
+    height: number
+    text?: string;
+    author: ProfileProps;
+};
+
 export interface CardSectionProps {
-    data: Array<CardProps>;
+    data: Array<INFT>;
     sectionName?: string;
     
 }

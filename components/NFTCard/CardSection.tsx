@@ -2,10 +2,6 @@ import react, { FunctionComponent } from "react";
 import styled from "styled-components/native"
 import { CardSectionProps } from "./types";
 import CardItem from "./CardItem";
-import { ScrollView } from "react-native";
-import { colors } from "../colors";
-import RegularText from "../texts/RegularText";
-import { useNavigation } from "@react-navigation/native";
 import { ScreenWidth, ScreenHeight } from "../shared";
 
 const CardList = styled.FlatList`
@@ -25,7 +21,6 @@ const CardListBackground = styled.View`
 
 
 const CardSection: React.FC<CardSectionProps> = (props: CardSectionProps) => {
-    const navigation = useNavigation();
     return (
         <CardListBackground>
         <CardList
