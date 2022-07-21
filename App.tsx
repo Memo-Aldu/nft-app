@@ -5,13 +5,9 @@ import { ActivityIndicator } from "react-native";
 //font 
 import { useFonts } from 'expo-font';
 import { I18nextProvider, useTranslation } from "react-i18next";
-
-import { Store } from "redux"
-
-import { configureStore  } from '@reduxjs/toolkit'
-import reducer from "./store/reducer"
 import { Provider } from "react-redux"
-import {NFTAction, DispatchType, NFTState } from "./store/type.d"
+import {store} from "./store/store"
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 import {initReactI18next} from 'react-i18next';
 import i18n from 'i18next';
@@ -43,22 +39,17 @@ export default function App() {
     return <ActivityIndicator color={"#fff"} />;
   }
 
-  const store: Store<NFTState, NFTAction> & {
-    dispatch: DispatchType
-  } = configureStore({
-      reducer:  reducer,
-      middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-          serializableCheck: false,
-        })
-    })
+
 
   return (
+    <RootSiblingParent>
     <Provider store={store}>
       <I18nextProvider i18n={i18n}>
       <RootStack /> 
       </I18nextProvider>
+      
     </Provider>
+    </RootSiblingParent>
 
   );
 }

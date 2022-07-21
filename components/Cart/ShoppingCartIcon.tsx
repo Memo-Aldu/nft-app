@@ -1,13 +1,11 @@
-import react, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import styled from "styled-components/native"
 import {connect, useSelector} from "react-redux";
-import SmallText from "../texts/SmallText";
 import RegularText from "../texts/RegularText";
 import { colors } from '../colors';
 import { Ionicons } from '@expo/vector-icons';
-import {NFTState} from "../../store/type.d";
+import {AppState} from "../../store/type.d";
 import { useNavigation } from "@react-navigation/native";
-import { StyleProp, TextStyle, ViewStyle } from "react-native";
 
 const IconView = styled.TouchableOpacity`
     padding: 5px;
@@ -30,7 +28,7 @@ const IconTextView = styled.View`
 
 
 const ShoppingCartIcon: FunctionComponent = (props) => {
-    const cart = useSelector((state: NFTState) => state.cart);
+    const cart = useSelector((state: AppState) => state.cartReducer.cart);
     const navigation = useNavigation();
     return (
     <IconView onPress={() => {navigation.navigate('Cart' as never)}}>
@@ -41,9 +39,9 @@ const ShoppingCartIcon: FunctionComponent = (props) => {
     </IconView>);
 };
 
-const mapStateToProps = (state: NFTState) => {
+const mapStateToProps = (state: AppState) => {
     return {
-        cart: state.cart,
+        cart: state.cartReducer.cart,
     }
 };
 

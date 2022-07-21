@@ -1,9 +1,9 @@
 import react, { FunctionComponent } from "react";
 import styled from "styled-components/native"
-import { colors } from "../colors";
 import { ProfileProps } from "./types";
 import SmallText from "../texts/SmallText";
-import { View, Image } from "react-native";
+import {Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const ProfileView = styled.TouchableOpacity`
     height: 100%;
@@ -22,8 +22,9 @@ const StyledView = styled.View`
 `;
 
 const ProfileItem: FunctionComponent<ProfileProps> = (props) => {
+    const navigation = useNavigation();
     return(
-        <ProfileView onPress={props.onPress}>
+        <ProfileView onPress={() => {navigation.navigate("Collection" as never, {"nftCollection" : props} as never)}}>
             <StyledView style={{backgroundColor: props.background}}>
                 <Image source={props.pfp} style={[{width: 50, height: 50, borderRadius:25}, props.profileStyles]} />
             </StyledView>

@@ -2,7 +2,10 @@
     "translation" : {
         "Home" : {
             "Header": "Hey",
-            "HeaderSub": "Welcome Back"
+            "HeaderSub": "Welcome Back",
+            "TopCollection": "Top Collection",
+            "TrendingCollection": "Trending Collection",
+            "PickedForYou": "Picked For You"
            },
         "Search" : {
             "Header": "Discover NFT's",
@@ -19,6 +22,28 @@
         "Cart" : {
             "Header": "Your Cart",
             "HeaderSub": "Checkout with your items!"
-           }
+           },
+        "Card" : {
+            "AddToCart": "Add to Cart",
+            "Buy": "Buy"
+        },
+        "FAQ": {
+            "Header": "Frequently asked Questions",
+            "1": {
+                "Question": "What is NFT?",
+                "Answer": "A non-fungible token is a financial security consisting of digital data stored in a blockchain, a form of distributed ledger. The ownership of an NFT is recorded in the blockchain, and can be transferred by the owner, allowing NFTs to be sold and traded."
+            },
+            "2": {
+                "Question": "How do I buy an NFT?",
+                "Answer": "It's very simple. First of all brows our NFT market and select the NFT you want to buy. Then you can press on the buy button and your Ethereum wallet will be charged."
+            },
+            "3": {
+                "Question": "How do I sell an NFT?",
+                "Answer": "This feature is coming soon. But as of now you can only sell your NFT on our website and third party company's."
+            },
+            "Video": {
+                "Header": "How to buy your first NFT"
+            }
+        }
     }
 }

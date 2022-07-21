@@ -1,13 +1,15 @@
 import React, { FunctionComponent, useState } from 'react';
-import styled from 'styled-components/native';
 import { colors } from "../colors";
-import RegularText from '../texts/RegularText';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { DrownDownProps } from './types';
+import { Platform } from 'react-native';
 
+interface DropDownProps {
+    data:  Array<any>;
+    onChange: (item: any) => void;
+    name: string;
+}
 
-
-const DropDown: FunctionComponent<DrownDownProps> = (props) => {
+const DropDown: FunctionComponent<DropDownProps> = (props: DropDownProps) => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState(props.data);
@@ -20,6 +22,30 @@ const DropDown: FunctionComponent<DrownDownProps> = (props) => {
             setValue={setValue}
             setItems={setItems}
             placeholder={props.name}
+            style={[Platform.OS === 'ios' ? {height: 40, zIndex: 10}: {height: 40}, {
+                backgroundColor: 'transparent',
+                borderColor: colors.grey,
+                borderWidth: 0,
+                borderRadius: 5,
+                padding: 5,
+            }]}
+            onSelectItem={(item) => {props.onChange(item.value)}}
+            textStyle={{
+                fontSize: 14,
+                color: colors.orange,
+            }}
+            containerStyle={{
+                justifyContent: 'center',
+                alignSelf: 'center',
+                zIndex: 100,
+                height:60,
+            }}
+            dropDownContainerStyle={{
+                justifyContent: 'center',
+                alignSelf: 'center',
+                backgroundColor: colors.lightGrey,
+                borderWidth: 0,
+            }}
         />
     );
 };

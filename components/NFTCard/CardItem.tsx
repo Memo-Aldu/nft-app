@@ -1,9 +1,9 @@
-import react, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import styled from "styled-components/native"
 import { colors } from "../colors";
-import { ScreenWidth, ScreenHeight } from "../shared";
+import { ScreenWidth } from "../shared";
 import { INFT } from "./types";
-import { Image, StyleSheet } from "react-native";
+import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import RegularButton from "../buttons/RegularButton";
 
@@ -74,31 +74,55 @@ const CardTouchable = styled.TouchableOpacity`
     activeOpacity: 0.7px;
 `;
 
-import card_bg from "./../../assets/bgs/background_transparent.png";
-import bayc from "./../../assets/nft-collections/bayc-1.png";
 import SmallText from "../texts/SmallText";
 import { useNavigation } from "@react-navigation/native";
+import {DispatchType } from "../../store/type.d";
+import { useDispatch } from "react-redux";
+import React from "react";
+import { useTranslation } from "react-i18next";
+
+
 
 const CardItem: FunctionComponent<INFT> = (props) => {
     const navigation = useNavigation();
+    const { t } = useTranslation();
     const handlePress = () => {navigation.navigate("NFTDetails" as never, {"nft" : props} as never)};
-    const handleNFTPress = () => {console.log("NFT BUY Pressed")};
-    console.log(props.image)
+    const dispatch: DispatchType = useDispatch();
+    const [isLiked, setIsLiked] = React.useState(false);
+    const handleNFTPress = () => {
+        dispatch({type: "ADD_NFT", nft: props});
+        navigation.navigate("Cart" as never)
+    };
+
+    const handleNFTLiked = () => {
+        if(!isLiked) {
+            dispatch({type: "SET_LIKES", payload: [props]});
+        }else{
+            dispatch({type: "REMOVE_LIKES", payload: [props]});
+        }
+
+        setIsLiked(!isLiked);
+    }
     return (
         <CardView>
             <CardTouchable style={Style.card} onPress={handlePress}>
+                <TouchableOpacity  style={{zIndex: 1, justifyContent: 'center', alignItems: 'center', position: "absolute", right: 10, top: 20}} onPress={handleNFTLiked}>
                 <Ionicons 
-                name="heart-outline" 
-                size={28} 
-                color={colors.white}
-                style={{position: "absolute", zIndex: 1, right: 10, top: 20}} />
+                    name= {isLiked ? "heart" :"heart-outline" }
+                    size={28} 
+                    color={isLiked? 'red':colors.white}
+                    />
+                </TouchableOpacity>
+
+
                 <CardBackground source={props.image}  />
                 <CardDetailsView>
                     <CardDetailsSubView>
                         <Image source={require('./../../assets/eth.jpg')} style={{width: 25, height: 25, borderRadius: 25}} />
                         <SmallText textStyles={{fontWeight: 'bold', marginLeft: 4, color: colors.white}}>{props.data.price}</SmallText>
                     </CardDetailsSubView>
-                    <RegularButton onPress={handleNFTPress} textStyles={{fontSize: 15, fontWeight: 'bold'}} btnStyles={{width:70, height:30, justifyContent: 'center', borderRadius: 8, padding: 0}}>Buy</RegularButton>
+                    <RegularButton onPress={handleNFTPress} textStyles={{fontSize: 15, fontWeight: 'bold'}}
+                     btnStyles={{width:70, height:30, justifyContent: 'center', borderRadius: 8, padding: 0}}>{t('Card.Buy')}</RegularButton>
                 </CardDetailsView>
             </CardTouchable>
         </CardView>

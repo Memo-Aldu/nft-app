@@ -1,20 +1,19 @@
 import * as React from 'react';
 import { Searchbar } from 'react-native-paper';
 
-
-const MySearchbar = () => {
-  const [searchQuery, setSearchQuery] = React.useState('');
-
-  const onChangeSearch = (query: React.SetStateAction<string>) => setSearchQuery(query);
-
+interface SearchBarProps {
+    onChangeSearch: (text: string) => void;
+    searchQuery: string;
+}
+const MySearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
   return (
     <Searchbar
-      style={{ marginHorizontal: 30 }}
+      style={{width: '100%'}}
       placeholder="Search for NFTs and Collections"
-      onChangeText={onChangeSearch}
-      value={searchQuery}
+      onChangeText={props.onChangeSearch}
+      value={props.searchQuery}
     />
   );
 };
 
-export default MySearchbar;
+export default MySearchBar;

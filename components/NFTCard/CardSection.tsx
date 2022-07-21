@@ -1,8 +1,7 @@
-import react, { FunctionComponent } from "react";
 import styled from "styled-components/native"
 import { CardSectionProps } from "./types";
 import CardItem from "./CardItem";
-import { ScreenWidth, ScreenHeight } from "../shared";
+import { ScreenWidth } from "../shared";
 
 const CardList = styled.FlatList`
     width: 100%;
@@ -17,8 +16,6 @@ const CardListBackground = styled.View`
     padding-top: 5px;
     flex: 1;
 `;
-
-
 
 const CardSection: React.FC<CardSectionProps> = (props: CardSectionProps) => {
     return (

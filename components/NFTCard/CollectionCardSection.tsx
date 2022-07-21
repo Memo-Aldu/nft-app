@@ -2,10 +2,7 @@ import react, { FunctionComponent } from "react";
 import styled from "styled-components/native"
 import { CardSectionProps } from "./types";
 import CollectionItem from "./CollectionItem";
-import RegularText from "../texts/RegularText";
-import SmallText from "../texts/SmallText";
-import { colors } from "../colors";
-import { Ionicons } from '@expo/vector-icons';
+
 const SearchView = styled.View`
     width: 100%;
     padding-horizontal: 10px;

@@ -3,14 +3,13 @@ import { colors } from "../components/colors";
 import Greeting from "../components/Header/Greeting";
 import { Ionicons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
-import { I18nextProvider, useTranslation } from "react-i18next";
-import ProfileIcon from "../components/Header/ProfileIcon";
-import Drawer from './Drawer';
+import {useTranslation } from "react-i18next";
 import { DrawerActions } from '@react-navigation/native';
 
 //screens
 import Home from '../screens/Home';
 import WelcomeScreen  from '../screens/WelcomeScreen';
+import Collection from '../screens/Collection';
 import Search from '../screens/Search';
 import Ranking from "../screens/Ranking";
 import Profile from "../screens/Profile";
@@ -63,8 +62,13 @@ const MyTheme = {
 
 
 const MyCustomTabBar = ({ state, descriptors, navigation }: MyTabBarProps ) => {
+    const route = state.routes[state.index];
+    if( route.name === 'Welcome' ) {
+        return null
+    }
     return (
-    <CustomTabBarView style={{
+    <CustomTabBarView 
+    style={{
         backgroundColor: colors.darkGrey,
         position: 'absolute',
         bottom: 10,
@@ -76,6 +80,7 @@ const MyCustomTabBar = ({ state, descriptors, navigation }: MyTabBarProps ) => {
         shadowColor: colors.black,
         shadowOffset: { width: 10, height: 10 },
         shadowOpacity: 0.06,
+
     }}>
         {state.routes.map((route:any, index:any) => {
             const { options } = descriptors[route.key];
@@ -98,7 +103,7 @@ const MyCustomTabBar = ({ state, descriptors, navigation }: MyTabBarProps ) => {
                     <Text style={{color: isFocused ? colors.lightGrey: colors.darkGrey, fontSize: 12}}>{isFocused && label}</Text>
                     {isFocused && label !== "Cart" && ( // black line indicator
                         <View style={{height:6, width:30, position: 
-                            "absolute", backgroundColor: colors.black, top: -11, 
+                            "absolute", backgroundColor: colors.white, top: -11, 
                             borderBottomLeftRadius: 6, borderBottomRightRadius: 6}}/>)}
 
                 </TouchableOpacity>
@@ -112,10 +117,6 @@ const Tab = createBottomTabNavigator();
 
 const BottomBar: FunctionComponent = (props) => {
     const { t, i18n } = useTranslation();
-    const changeLanguage = () => {
-        console.log("change language");
-        i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en');
-    }
     const navigation = useNavigation();
     const closeDrawer = () => {
         navigation.dispatch(DrawerActions.toggleDrawer());
@@ -124,7 +125,8 @@ const BottomBar: FunctionComponent = (props) => {
 
             <Tab.Navigator
                 screenOptions={{   
-                    tabBarShowLabel: false,                
+                    tabBarShowLabel: false,     
+                    tabBarHideOnKeyboard: true,           
                     tabBarStyle: {
                         height: 70,
                     },
@@ -159,7 +161,7 @@ const BottomBar: FunctionComponent = (props) => {
                 tabBar={(props) => (
                     <MyCustomTabBar {...props} />
                 )}
-                initialRouteName="Home">
+                initialRouteName="Welcome">
                 <Tab.Screen name="Home" component={Home} 
                 options={{
                     headerTitleAlign: 'left',
@@ -228,7 +230,7 @@ const BottomBar: FunctionComponent = (props) => {
                 <Tab.Screen name="Profile" component={Profile} options={{headerShown: false,
                     tabBarIcon:(props: TabBarIconProps) => 
                     <Ionicons color={props.color} size={props.size} name="person"/>}}/> 
-                <Tab.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false}}/> 
+                <Tab.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false, tabBarStyle: {display: 'none'}}}/> 
                 <Tab.Screen name="NFTDetails" component={NFTDetailsScreen} options={{headerShown: false}}/>
                 <Tab.Screen name="Info" component={Info} options={{
                     headerTitleAlign: 'left',
@@ -240,6 +242,7 @@ const BottomBar: FunctionComponent = (props) => {
                     ),
                     headerLeft: () => <></>
                 }}/>
+                <Tab.Screen name="Collection" component={Collection} options={{headerShown: false, tabBarStyle: {display: 'none'}}}/>
             </Tab.Navigator>
     );
 }

@@ -1,14 +1,15 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
-import { INFT, CardSectionProps } from "../NFTCard/types"; 
+import { INFT } from "../NFTCard/types"; 
 import RegularText from '../texts/RegularText';
 import SmallText from '../texts/SmallText';
 import { colors } from '../colors';
 import { Ionicons } from '@expo/vector-icons';
-import { connect, useSelector } from "react-redux";
-import { DispatchType, NFTState } from "./../../store/type.d";
-import { View, ViewBase } from 'react-native';
+import { connect } from "react-redux";
+import { DispatchType } from "./../../store/type.d";
+import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 const CartRow = styled.View`
     flex-direction: row;
@@ -58,6 +59,7 @@ interface CartItemProps {
 const CartItem: React.FC<CartItemProps> = (props: CartItemProps) => {
     const {nft} = props;
     const navigation = useNavigation();
+    const { t, i18n } = useTranslation();
     const handlePress = () => {
         navigation.navigate("NFTDetails" as never, {"nft" : nft} as never)
     };
@@ -90,10 +92,9 @@ const CartItem: React.FC<CartItemProps> = (props: CartItemProps) => {
 const mapDispatchToProps = (dispatch: DispatchType) => {
     return {
         removeFromCart: (nft: INFT) => {
-            console.log(nft);
             dispatch({type: 'REMOVE_NFT', nft: nft});
         }
     }
-}
+};
 
 export default connect(null,mapDispatchToProps)(CartItem);

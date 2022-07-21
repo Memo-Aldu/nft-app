@@ -1,11 +1,10 @@
 import React, { FunctionComponent } from "react";
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from "react-native";
 import styled from "styled-components/native";
 import  { colors } from "../components/colors";
 import { Container } from "../components/shared";
 import BigText from "../components/texts/BigText";
 import SmallText from "../components/texts/SmallText";
-import RegularText from "../components/texts/RegularText";
 
 // custom component
 const WelcomeContainer = styled(Container)`
@@ -38,24 +37,28 @@ const BottomSection = styled.View`
 import background from "./../assets/bgs/background_v1.png";
 import RegularButton from "../components/buttons/RegularButton";
 import { useTranslation } from "react-i18next";
+import { useNavigation } from "@react-navigation/native";
 
 const WelcomeScreen: FunctionComponent = () => {
     const { t } = useTranslation();
+    const navigate = useNavigation();
     return (
         <>
-            <StatusBar style="light"/>
+            <StatusBar translucent
+                backgroundColor="transparent"
+                barStyle="dark-content"/>
             <WelcomeContainer>
                 <TopSection>
                     <TopImage source={background}/>
                 </TopSection>
                 <BottomSection>
                     <BigText textStyles = {{width:"70%", marginBottom: 25 }}>
-                        Welcome to my app
+                        EASY NFT
                     </BigText>
                     <SmallText textStyles = {{width:"70%", marginBottom: 25 }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        The Best NFT MarketPlace!
                     </SmallText>
-                    <RegularButton btnStyles={{padding: 10}} onPress={() => {}}>
+                    <RegularButton btnStyles={{padding: 10}} onPress={() => {navigate.navigate('Home')}}>
                         Get Started
                     </RegularButton>
                 </BottomSection>

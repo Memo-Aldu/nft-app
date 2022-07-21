@@ -8,9 +8,8 @@ export interface INFT {
     data : {
         price: number;
         likes: number
-        comments: number
+        comments: Comments[]
     }
-    comments : Comments[]
     description?: string;
     creator?: ProfileProps ;
     collection?: string;
@@ -18,7 +17,6 @@ export interface INFT {
 
 export interface Comments { // move to its component when it's ready
     id: number;
-    height: number
     text?: string;
     author: ProfileProps;
 };

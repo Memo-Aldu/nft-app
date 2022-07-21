@@ -1,9 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components/native';
 import { RankingAviProps } from './types';
-import { colors } from '../colors';
-import { Ionicons } from '@expo/vector-icons';
-import { View, Image } from "react-native";
+import {Image } from "react-native";
 
 const StyledView = styled.View`
     height: 55px;

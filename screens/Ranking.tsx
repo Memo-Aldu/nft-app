@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { StatusBar } from "react-native";
 import styled from "styled-components/native";
-import DropDown from "../components/buttons/DropDown";
 import { colors } from "../components/colors";
 import RankingSection from "../components/Ranking/RankingSection";
 import { Container } from "../components/shared";

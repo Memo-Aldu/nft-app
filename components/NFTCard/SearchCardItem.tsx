@@ -1,7 +1,7 @@
 import react, { FunctionComponent } from "react";
 import styled from "styled-components/native"
-import { colors } from "../colors";
 import { INFT } from "./types";
+import { useNavigation } from "@react-navigation/native";
 
 const CardBackground = styled.ImageBackground`
     height: 150px;
@@ -34,16 +34,17 @@ const Logo = styled.Image`
     resize-mode: contain;
     flex: 1;
 `;
-import card_bg from "./../../assets/bgs/background_transparent.png";
-import bayc from "./../../assets/nft-collections/bayc-1.png";
+
 
 const SearchCardItem: FunctionComponent<INFT> = (props) => {
-    const handlePress = () => {};
+    const handleProfilePress = () => {};
+    const navigation = useNavigation();
+    const handlePress = () => {navigation.navigate("NFTDetails" as never, {"nft" : props} as never)};
 
     return (
-        <TouchableView>
+        <TouchableView onPress={handlePress}>
             <CardBackground  source={props.image}>
-                <CardCreatorTouchable onPress={handlePress}>
+                <CardCreatorTouchable onPress={handleProfilePress}>
                 <Logo source={props.creator?.pfp} style={{borderRadius:25}}  />
                 </CardCreatorTouchable>
             </CardBackground>

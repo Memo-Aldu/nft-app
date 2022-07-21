@@ -1,5 +1,4 @@
 import react, { FunctionComponent } from "react";
-import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer} from "@react-navigation/native";
 import {ScreenWidth} from "../components/shared";
@@ -11,11 +10,11 @@ import BottomBar from "./BottomBar";
 const Drawer = createDrawerNavigator();
 
 const MyDrawer: FunctionComponent = (props) => {
-  const { t, i18n } = useTranslation();
+  const {t} = useTranslation();
   return (
     <NavigationContainer>
         <Drawer.Navigator 
-            drawerContent={props => <DrawerContent {...props} />}
+            drawerContent={props => <DrawerContent children={undefined} route={undefined} {...props} />}
                 screenOptions={{   
                     drawerPosition: 'right',
                     drawerStyle: {
