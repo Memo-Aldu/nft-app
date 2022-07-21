@@ -94,7 +94,7 @@ const NFTDetailsScreen: FunctionComponent<NFTDetailsScreenProps> = (props) => {
                             {nft.name}
                         </RegularText>
                         <RegularText textStyles={{fontSize: 15, color: colors.black, fontWeight:'normal', paddingTop:10}}>
-                            {nft.description}
+                            {t("Card.Description")}
                         </RegularText>
                     </NFTTextView>
                 </NFTRowView>

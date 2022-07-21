@@ -78,10 +78,9 @@ const CollectionView = styled.View`
 const Profile: FunctionComponent = () => {
     const navigation = useNavigation();
     const user = useSelector((state: AppState) => state.userReducer.user);
-    const [collection, setCollection] = React.useState([]);
+    const [collection, setCollection] = React.useState(user.collections);
     const [collectionIsOpen, setcollectionIsOpen] = React.useState(true);
     const [likesIsOpen, setLikesIsOpen] = React.useState(false);
-
     return (
         <ProfileContainer>
             <StatusBar translucent

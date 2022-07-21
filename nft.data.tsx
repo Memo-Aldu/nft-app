@@ -80,7 +80,7 @@ export const data = [
                         }
                     ],
                 },
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Bayc",
@@ -134,7 +134,7 @@ export const data = [
                     ],
                 },
 
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Bayc",
@@ -176,7 +176,7 @@ export const data = [
                         }
                     ],
                 },
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Bayc",
@@ -207,7 +207,7 @@ export const data = [
                         }
                     ],
                 },
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Bayc",
@@ -240,7 +240,7 @@ export const data = [
                         }
                     ],
                 },
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Cool Cats",
@@ -270,7 +270,7 @@ export const data = [
                         }
                     ],
                 },
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Cool Cats",
@@ -301,7 +301,7 @@ export const data = [
                         }
                     ],
                 },
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Cool Cats",
@@ -334,7 +334,7 @@ export const data = [
                         }
                     ],
                 },
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Crypto Pucks",
@@ -376,7 +376,7 @@ export const data = [
                         }
                     ],
                 },
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Crypto Pucks",
@@ -420,7 +420,7 @@ export const data = [
                         }
                     ],
                 },
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Meetbits",
@@ -462,7 +462,7 @@ export const data = [
                         }
                     ],
                 },
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Meetbits",
@@ -506,7 +506,7 @@ export const data = [
                         }
                     ],
                 },
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Mutant Ape",
@@ -548,7 +548,7 @@ export const data = [
                         }
                     ],
                 },
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Mutant Ape",
@@ -590,7 +590,7 @@ export const data = [
                         }
                     ],
                 },
-                description: "Quisque cursus, metus vitae pharetra Nam libero tempore, cum soluta nobis est eligendi",
+                description: "This is one of the best NFTs on the market, with its unique traits making it extremely rare.",
                 creator: {
                     id: 4,
                     name: "Mutant Ape",

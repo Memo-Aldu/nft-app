@@ -25,7 +25,8 @@
            },
         "Card" : {
             "AddToCart": "Add to Cart",
-            "Buy": "Buy"
+            "Buy": "Buy",
+            "Description": "This is one of the best NFTs on the market, with its unique traits making it extremely rare."
         },
         "FAQ": {
             "Header": "Frequently asked Questions",

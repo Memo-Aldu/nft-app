@@ -4,12 +4,12 @@ import { colors } from "../components/colors";
 import { Container } from "../components/shared";
 import CollapsibleView from "@eliav2/react-native-collapsible-view";
 import RegularText from "../components/texts/RegularText";
-import {Image, StatusBar} from "react-native";
-
-
-import myVideo from "../assets/video.jpg";
+import {Button, Image, StatusBar, View, StyleSheet} from "react-native";
 import SmallText from "../components/texts/SmallText";
 import { useTranslation } from "react-i18next";
+import { Video, AVPlaybackStatus } from 'expo-av';
+
+
 const InfoContainer = styled(Container)`
     background-color: ${colors.lightGrey};
     width: 100%;
@@ -30,6 +30,8 @@ const Info: FunctionComponent = () => {
     const [expanded, setExpanded] = React.useState(true);
     const {t} = useTranslation();
     const handlePress = () => setExpanded(!expanded);
+    const video = React.useRef(null);
+    const [status, setStatus] = React.useState({});
     return (
         <InfoContainer>
             <StatusBar translucent
@@ -60,9 +62,36 @@ const Info: FunctionComponent = () => {
             <InfoRow style={{marginTop: 20, marginBottom: 5}}>
                 <RegularText textStyles={{fontSize: 19, color: colors.secondary}}>{t('FAQ.Video.Header')}</RegularText>
             </InfoRow>
-            <Image source={myVideo} width={500} height={500} style={{width: 330, height: 200}}/>
+
+            <Video
+                ref={video}
+                style={styles.video}
+                source={require('../assets/myVideo.mp4')}
+                useNativeControls
+                resizeMode="contain"
+                isLooping
+                onPlaybackStatusUpdate={status => setStatus(() => status)}
+            />
         </InfoContainer>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      backgroundColor: '#ecf0f1',
+    },
+    video: {
+      alignSelf: 'center',
+      width: 320,
+      height: 200,
+    },
+    buttons: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  });
 
 export default Info;
