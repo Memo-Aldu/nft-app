@@ -1,6 +1,8 @@
 # nft-app
 
-## If you want to run the app on you phone do the following (This only works for android because apple guidelines don't allow it!!)
+## If you want to run the app on you phone do the following 
+### This only works for android because apple guidelines don't allow it!!
+### If you want it to work on IOS you would have to create a expo account and I would need to add you to the ORG. If that's the case email me @maldu064@uOttawa.ca
 ### Step 1: Install Expo Go on your phone https://expo.dev/client
 ### Step 2: Scan this QR https://expo.dev/@memoorg/Easy-NFT code using your camera once Expo Go is isntalled
 ### ![qr](https://user-images.githubusercontent.com/71087733/180337393-ba46de7a-3d92-475f-a307-aad022445ce8.PNG)
